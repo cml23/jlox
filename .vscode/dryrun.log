@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/clangenfeld/lox/jlox'
+javac com/cml23/lox/*.java
+make: Leaving directory '/home/clangenfeld/lox/jlox'
+ 
