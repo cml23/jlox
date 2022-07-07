@@ -1,5 +1,5 @@
 build:
-	javac com/cml/lox/*.java
+	javac com/cml23/lox/*.java
 repl:
-	java com/cml/lox/Lox $(SCRIPT)
+	java com/cml23/lox/Lox $(SCRIPT)
 .PHONY: lox

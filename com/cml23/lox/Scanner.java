@@ -102,6 +102,8 @@ class Scanner {
           while (peek() != '\n' && !isAtEnd()) {
             advance();
           }
+        } else if (match('*')) {
+          blockComment();
         } else {
           addToken(SLASH);
         }
@@ -167,6 +169,24 @@ class Scanner {
     advance();
     String value = source.substring(start + 1, current - 1);
     addToken(STRING, value);
+  }
+
+  private void blockComment() {
+    while ((peek() != '*' || peekNext() != '/') && !isAtEnd()) {
+      if (peek() == '\n') {
+        line++;
+      }
+      if (peek() == '/' && peekNext() == '*') {
+        scanToken();
+      } else
+        advance();
+    }
+    if (isAtEnd()) {
+      Lox.error(line, "Unmatched /*");
+      return;
+    }
+    advance();
+    advance();
   }
 
   private boolean match(char expected) {
