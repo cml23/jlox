@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 15 18:00:40 2022
+# Make data base, printed on Sat Jul 16 11:52:04 2022
 
 # Variables
 
@@ -35,6 +37,8 @@ VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /mnt/c/Users/clang/AppData/Local/Programs/Microsoft VS Code/bin/code
 # makefile (from 'Makefile', line 1)
+BUIlD_DIR := bin/
+# makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
 GNUMAKEFLAGS := 
@@ -51,7 +55,7 @@ PATH = /home/clangenfeld/.vscode-server/bin/b06ae3b2d2dbfe28bca3134cc6be65935cdf
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-3eb6f6e8-c6d2-4d5e-a591-014c587a05c7.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-294bc30d-87c2-4171-85c7-7d6e411569b7.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -77,7 +81,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = clangenfeld
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -151,7 +155,7 @@ WSL_DISTRO_NAME = Ubuntu
 # environment
 MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=70/1024=7%, Rehash=0, Collisions=5/95=5%
+# Load=71/1024=7%, Rehash=0, Collisions=5/96=5%
 
 # Pattern-specific Variable Values
 
@@ -176,7 +180,7 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-.PHONY: lox
+.PHONY: repl
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -184,7 +188,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-07 15:26:45.7902568
+#  Last modified 2022-07-16 11:31:37.859228
 #  File has been updated.
 #  Successfully updated.
 
@@ -192,8 +196,16 @@ build:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 2):
-	javac com/cml23/lox/*.java
+#  recipe to execute (from 'Makefile', line 3):
+	javac com/cml23/lox/*.java -d $(BUIlD_DIR)
+
+generate:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 9):
+	javac com/cml23/tool/*.java -d $(BUIlD_DIR)
+	java -cp bin com.cml23.tool.GenerateAst com/cml23/lox
 
 # Not a target:
 .DEFAULT:
@@ -201,35 +213,35 @@ build:
 #  Modification time never checked.
 #  File has not been updated.
 
-repl:
+run:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 4):
-	java com/cml23/lox/Lox $(SCRIPT)
+#  recipe to execute (from 'Makefile', line 7):
+	java -cp bin com.cml23.lox.Lox $(SCRIPT)
 
-lox:
+repl:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 5):
+	java -cp bin com.cml23.lox.Lox 
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/19=0%
+# Load=9/1024=1%, Rehash=0, Collisions=0/20=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 122 B / avg = 7 B
-# current buf: size = 8162 B / used = 122 B / count = 17 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 18 / storage = 131 B / avg = 7 B
+# current buf: size = 8162 B / used = 131 B / count = 18 / avg = 7 B
 
-# strcache performance: lookups = 24 / hit rate = 29%
+# strcache performance: lookups = 28 / hit rate = 35%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Fri Jul 15 18:00:40 2022
+# Load=18/8192=0%, Rehash=0, Collisions=1/28=4%
+# Finished Make data base on Sat Jul 16 11:52:04 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-
