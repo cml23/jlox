@@ -97,6 +97,9 @@ class Scanner {
       case '>':
         addToken(match('=') ? GREATER_EQUAL : GREATER);
         break;
+      case '^':
+        addToken(CARAT);
+        break;
       case '/':
         if (match('/')) {
           while (peek() != '\n' && !isAtEnd()) {

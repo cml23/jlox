@@ -119,7 +119,7 @@ public class Parser {
   private Expr term() {
     Expr expr = factor();
 
-    while (match(MINUS, PLUS)) {
+    while (match(MINUS, PLUS, CARAT)) {
       Token operator = previous();
       Expr right = factor();
       expr = new Expr.Binary(expr, operator, right);

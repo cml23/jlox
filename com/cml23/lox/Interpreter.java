@@ -46,19 +46,18 @@ class Interpreter implements Expr.Visitor<Object> {
         return (double) left - (double) right;
       case SLASH:
         checkNumberOperands(expr.operator, left, right);
+        checkDivisionbyZero(expr.operator, right);
         return (double) left / (double) right;
       case STAR:
         checkNumberOperands(expr.operator, left, right);
         return (double) left * (double) right;
       case PLUS:
-        if (left instanceof Double && right instanceof Double) {
-          return (double) left + (double) right;
-        }
-        if (left instanceof String && right instanceof String) {
-          return (String) left + (String) right;
-        }
-        throw new RuntimeError(expr.operator,
-            "Operands must be two numbers or two strings");
+        checkNumberOperands(expr.operator, left, right);
+        return (double) left + (double) right;
+      case CARAT:
+        checkStringOperands(expr.operator, left, right);
+        return stringify(left) + stringify(right);
+
     }
     // Unreachable
     return null;
@@ -92,6 +91,19 @@ class Interpreter implements Expr.Visitor<Object> {
     if (left instanceof Double && right instanceof Double)
       return;
     throw new RuntimeError(operator, "Operands must be numbers");
+  }
+
+  private void checkDivisionbyZero(Token operator, Object right) {
+    if ((double) right == 0)
+      throw new RuntimeError(operator,
+          "Cannot divide by zero");
+  }
+
+  // Check if either operand is a String
+  private void checkStringOperands(Token operator, Object left, Object right) {
+    if (left instanceof String || right instanceof String)
+      return;
+    throw new RuntimeError(operator, "At least one operand must be a string.");
   }
 
   private boolean isTruthy(Object object) {
