@@ -21,6 +21,10 @@ class Environment {
 
   Object get(Token name) {
     if (values.containsKey(name.lexeme)) {
+      Object value = values.get(name.lexeme);
+      if (value instanceof RuntimeError) {
+        throw (RuntimeError) value;
+      }
       return values.get(name.lexeme);
     }
 

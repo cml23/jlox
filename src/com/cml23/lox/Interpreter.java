@@ -181,7 +181,8 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
   @Override
   public Void visitVarStmt(Stmt.Var stmt) {
-    Object value = null;
+    Object value = new RuntimeError(stmt.name, "Variable " + stmt.name.lexeme +
+        " accessed before assignment.");
     if (stmt.initializer != null) {
       value = evaluate(stmt.initializer);
     }
