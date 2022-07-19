@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 16 11:52:04 2022
+# Make data base, printed on Tue Jul 19 16:38:07 2022
 
 # Variables
 
@@ -55,7 +53,7 @@ PATH = /home/clangenfeld/.vscode-server/bin/b06ae3b2d2dbfe28bca3134cc6be65935cdf
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-294bc30d-87c2-4171-85c7-7d6e411569b7.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-d21dae4c-ad3a-48b4-a375-bbca763b56c6.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -81,7 +79,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = clangenfeld
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -188,7 +186,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-16 11:31:37.859228
+#  Last modified 2022-07-16 12:30:26.149228
 #  File has been updated.
 #  Successfully updated.
 
@@ -197,15 +195,15 @@ build:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 3):
-	javac com/cml23/lox/*.java -d $(BUIlD_DIR)
+	javac src/com/cml23/lox/*.java -d $(BUIlD_DIR)
 
 generate:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 9):
-	javac com/cml23/tool/*.java -d $(BUIlD_DIR)
-	java -cp bin com.cml23.tool.GenerateAst com/cml23/lox
+	javac src/com/cml23/tool/*.java -d $(BUIlD_DIR)
+	java -cp bin com.cml23.tool.GenerateAst src/com/cml23/lox
 
 # Not a target:
 .DEFAULT:
@@ -242,6 +240,8 @@ repl:
 # strcache performance: lookups = 28 / hit rate = 35%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Sat Jul 16 11:52:04 2022
+# Finished Make data base on Tue Jul 19 16:38:07 2022
 
  
+make: *** No rule to make target 'all'.  Stop.
+
