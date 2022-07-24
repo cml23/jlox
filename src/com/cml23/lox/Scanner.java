@@ -51,6 +51,7 @@ class Scanner {
     keywords.put("true", TRUE);
     keywords.put("var", VAR);
     keywords.put("while", WHILE);
+    keywords.put("extends", EXTENDS);
   }
 
   private void scanToken() {
